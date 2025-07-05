@@ -3,7 +3,7 @@
 static const int servoPin1 = 25; //Pin Servo 1
 static const int servoPin2 = 33; //Pin Servo 2
 static const int servoPin3 = 32; //Pin servo 3
-static const int servoPin4 = 34; //Pin Servo 4
+static const int servoPin4 = 13; //Pin Servo 4
 
 int Vrx1 = A15; // input pin for joystick1 X
 int Vry1 = A16; // input pin for joystick1 Y
@@ -25,7 +25,7 @@ Servo servo4;
 
 int dx1 = 90; //1<dx1<180
 int dx2 = 20;
-int dx3 = 0;
+int dx3 = 10;
 int dx4 = 90;
 
 void setup() {
@@ -42,6 +42,7 @@ void setup() {
 }
 
 void loop() {
+  
   stick1.vrx = analogRead(Vry1);
   stick1.vry = analogRead(Vrx1);
   stick2.vrx = analogRead(Vrx2);
@@ -49,6 +50,9 @@ void loop() {
 
   moveServoMotor1(stick1.vrx);
   moveServoMotor2(stick1.vry);
+
+  moveServoMotor3(stick2.vrx);
+  moveServoMotor4(stick2.vry);
 
 /*
   Serial.print("Stick 1 - X: ");
@@ -83,13 +87,13 @@ void moveServoMotor1(int x1){
 }
 
 void moveServoMotor2(int x2){
-     if(x2 == 4095 && dx2 > 0 && dx2 < 180){
+     if(x2 == 4095 && dx2 > 0 && dx2 < 120){
       dx2++;
-      if(dx2==180)
+      if(dx2==120)
         dx2--;
     }
 
-    if(x2 == 0 && dx2 > 0 && dx2 < 180){
+    if(x2 == 0 && dx2 > 0 && dx2 < 120){
       dx2--;
       if(dx2==0)
         dx2++;  
@@ -97,4 +101,38 @@ void moveServoMotor2(int x2){
     servo2.write(dx2);
     Serial.print("Dx2: ");
     Serial.println(dx2); 
+}
+
+void moveServoMotor3(int x3){
+     if(x3 == 0 && dx3 > 0 && dx3 < 100){
+      dx3++;
+      if(dx3==100)
+        dx3--;
+    }
+
+    if(x3 == 4095 && dx3 > 0 && dx3 < 100){
+      dx3--;
+      if(dx3==0)
+        dx3++;  
+    }   
+    servo3.write(dx3);
+    Serial.print("Dx3: ");
+    Serial.println(dx3); 
+}
+
+void moveServoMotor4(int x4){
+     if(x4 == 0 && dx4 > 0 && dx4 < 180){
+      dx4++;
+      if(dx4==180)
+        dx4--;
+    }
+
+    if(x4 == 4095 && dx4 > 0 && dx4 < 180){
+      dx4--;
+      if(dx4==0)
+        dx4++;  
+    }   
+    servo4.write(dx4);
+    Serial.print("Dx4: ");
+    Serial.println(dx4); 
 }
