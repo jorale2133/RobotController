@@ -5,10 +5,10 @@ static const int servoPin2 = 33; //Pin Servo 2
 static const int servoPin3 = 32; //Pin servo 3
 static const int servoPin4 = 13; //Pin Servo 4
 
-int Vrx1 = A15; // input pin for joystick1 X
-int Vry1 = A16; // input pin for joystick1 Y
-int Vrx2 = A17; // input pin for joystick2 X
-int Vry2 = A19; // input pin for joystick2 Y
+const uint8_t Vrx1 = A10;
+const uint8_t Vry1 = A16;
+const uint8_t Vrx2 = A17;
+const uint8_t Vry2 = A19;
 
 struct JoyStick {
   int vrx;
@@ -42,11 +42,8 @@ void setup() {
 }
 
 void loop() {
-  
-  stick1.vrx = analogRead(Vry1);
-  stick1.vry = analogRead(Vrx1);
-  stick2.vrx = analogRead(Vrx2);
-  stick2.vry = analogRead(Vry2);
+
+  read_joystick();
 
   moveServoMotor1(stick1.vrx);
   moveServoMotor2(stick1.vry);
@@ -54,18 +51,24 @@ void loop() {
   moveServoMotor3(stick2.vrx);
   moveServoMotor4(stick2.vry);
 
-/*
-  Serial.print("Stick 1 - X: ");
-  Serial.print(stick1.vrx);
-  Serial.print(" | Y: ");
-  Serial.println(stick1.vry);
-
-  Serial.print("Stick 2 - X: ");
-  Serial.print(stick2.vrx);
-  Serial.print(" | Y: ");
-  Serial.println(stick2.vry);
-*/
   delay(30);
+}
+
+void read_joystick(){
+
+  int stickVrx1 = analogRead(Vrx1);
+  stick1.vry = analogRead(Vry1);
+  stick2.vrx = analogRead(Vrx2);
+  stick2.vry = analogRead(Vry2);
+
+// Imprimir en formato compatible con Serial Plotter
+  Serial.print(stickVrx1);
+  Serial.print("\t");       // separador
+  Serial.print(stick1.vry);
+  Serial.print("\t");
+  Serial.print(stick2.vrx);
+  Serial.print("\t");
+  Serial.println(stick2.vry);  // último valor + salto de línea
 }
 
 void moveServoMotor1(int x1){
@@ -82,8 +85,9 @@ void moveServoMotor1(int x1){
         dx1++;  
     }   
     servo1.write(dx1);
-    Serial.print("Dx1: ");
-    Serial.println(dx1);
+    //Serial.print("Dx1: ");
+    //Serial.println(dx1);
+
 }
 
 void moveServoMotor2(int x2){
@@ -99,8 +103,8 @@ void moveServoMotor2(int x2){
         dx2++;  
     }   
     servo2.write(dx2);
-    Serial.print("Dx2: ");
-    Serial.println(dx2); 
+    //Serial.print("Dx2: ");
+    //Serial.println(dx2); 
 }
 
 void moveServoMotor3(int x3){
@@ -116,8 +120,8 @@ void moveServoMotor3(int x3){
         dx3++;  
     }   
     servo3.write(dx3);
-    Serial.print("Dx3: ");
-    Serial.println(dx3); 
+    //Serial.print("Dx3: ");
+    //Serial.println(dx3); 
 }
 
 void moveServoMotor4(int x4){
@@ -133,6 +137,6 @@ void moveServoMotor4(int x4){
         dx4++;  
     }   
     servo4.write(dx4);
-    Serial.print("Dx4: ");
-    Serial.println(dx4); 
+    //Serial.print("Dx4: ");
+    //Serial.println(dx4); 
 }
