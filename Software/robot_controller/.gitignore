@@ -1,0 +1,9 @@
+# Ignorar todo por defecto
+*
+
+# Pero no ignores este archivo .gitignore
+!.gitignore
+
+# No ignorar la carpeta con tus scripts
+!my_scripts/
+!my_scripts/**
