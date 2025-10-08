@@ -3,12 +3,12 @@
 static const int servoPin1 = 25; //Pin Servo 1
 static const int servoPin2 = 33; //Pin Servo 2
 static const int servoPin3 = 32; //Pin servo 3
-static const int servoPin4 = 13; //Pin Servo 4
+static const int servoPin4 = 34; //Pin Servo 4
 
 const uint8_t Vrx1 = A10;
-const uint8_t Vry1 = A16;
-const uint8_t Vrx2 = A17;
-const uint8_t Vry2 = A19;
+const uint8_t Vry1 = A11;
+const uint8_t Vrx2 = A12;
+const uint8_t Vry2 = A13;
 
 struct JoyStick {
   int vrx;
@@ -55,8 +55,7 @@ void loop() {
 }
 
 void read_joystick(){
-
-  int stickVrx1 = analogRead(Vrx1);
+  stick1.vrx = analogRead(Vrx1);
   stick1.vry = analogRead(Vry1);
   stick2.vrx = analogRead(Vrx2);
   stick2.vry = analogRead(Vry2);
@@ -71,6 +70,7 @@ void read_joystick(){
   Serial.println(stick2.vry);  // último valor + salto de línea
 }
 
+//Mueve el servo motor de la base
 void moveServoMotor1(int x1){
 
     if(x1 == 0 && dx1 > 0 && dx1 < 180){
@@ -90,6 +90,7 @@ void moveServoMotor1(int x1){
 
 }
 
+// mueve elservo motor de la izquierdo
 void moveServoMotor2(int x2){
      if(x2 == 4095 && dx2 > 0 && dx2 < 120){
       dx2++;
@@ -107,6 +108,7 @@ void moveServoMotor2(int x2){
     //Serial.println(dx2); 
 }
 
+// Mueve el servo motor de lalado derecho derecho 
 void moveServoMotor3(int x3){
      if(x3 == 0 && dx3 > 0 && dx3 < 100){
       dx3++;
@@ -124,6 +126,7 @@ void moveServoMotor3(int x3){
     //Serial.println(dx3); 
 }
 
+//Mueve el servomotor del manipulador
 void moveServoMotor4(int x4){
      if(x4 == 0 && dx4 > 0 && dx4 < 180){
       dx4++;
