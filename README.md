@@ -20,14 +20,6 @@ Los principales objetivos incluyen el diseño electrónico, la programación del
 
 Desarrollar un sistema de control para un brazo robótico de acrílico basado en ESP32, capaz de operar manual y automáticamente.
 
-### Objetivos Específicos
-
-* Definir entradas, salidas y materiales. 
-* Diseñar la etapa de potencia.
-* Programar el ESP32 para el modo manual.
-* Conectar el microcontrolador con Python.
-* Programar el modo automático en Python.
-
 ---
 
 ## 🛠️ Materiales
@@ -44,6 +36,7 @@ Desarrollar un sistema de control para un brazo robótico de acrílico basado en
 
 * Arduino IDE
 * Python 3
+* Kicad
 
 ---
 
@@ -58,7 +51,6 @@ El brazo robótico de acrílico emplea 4 servos con rangos de movimiento distint
 | 2          | 0°            | 120°          |
 | 3          | 0°            | 100°          |
 | 4          | 0°            | 180°          |
-
 
 ## 📂 Información adicional
 
