@@ -40,4 +40,3 @@ def send_number(num):
 
 while(True):
     init()
-    os.system('cls')

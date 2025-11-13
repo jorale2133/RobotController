@@ -1,4 +1,3 @@
-#include <ESP32Servo.h>
 #include <HW504.h>
 #include <FourDOFController.h>
 
@@ -12,16 +11,14 @@ void setup() {
   Serial.begin(115200);
   J1.iniciar();
   J2.iniciar();
-
+  Serial.println("ESP32 listo...");
+  
 }
 
 void loop() {
-
   
   if(Serial.available()>0){
     Serial.println("Conectado con python.");
-    int Number=Serial.parseInt();
-    Serial.println(Number);
   }
 
 //  imprimir_valor();
