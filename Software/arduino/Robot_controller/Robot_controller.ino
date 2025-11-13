@@ -17,7 +17,8 @@ void setup() {
 
 void loop() {
 
-  if(Serial.available()){
+  
+  if(Serial.available()>0){
     Serial.println("Conectado con python.");
     int Number=Serial.parseInt();
     Serial.println(Number);

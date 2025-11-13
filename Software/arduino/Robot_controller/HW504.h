@@ -1,6 +1,5 @@
 #ifndef HW504_h
 #define HW504_h
-
 #include  <Arduino.h>
 
 class HW504{

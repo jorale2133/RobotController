@@ -12,7 +12,6 @@ HW504::HW504(uint8_t analogPin1, uint8_t analogPin2) {
 }
 
 void HW504::iniciar() {
-
   pinMode(pinA1, INPUT);
   pinMode(pinA2, INPUT);
   //Serial.println("Todo listo....");
