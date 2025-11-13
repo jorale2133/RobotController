@@ -15,7 +15,7 @@ void HW504::iniciar() {
 
   pinMode(pinA1, INPUT);
   pinMode(pinA2, INPUT);
-  Serial.println("Todo listo....");
+  //Serial.println("Todo listo....");
 }
 
 int HW504::leerAnalogico1() {

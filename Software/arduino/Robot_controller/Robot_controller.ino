@@ -8,7 +8,7 @@ HW504 J2(A6, A7);
 FourDOFController robot(25, 26, 27, 33);
 
 void setup() {
-  
+
   Serial.begin(115200);
   J1.iniciar();
   J2.iniciar();
@@ -16,7 +16,14 @@ void setup() {
 }
 
 void loop() {
-  imprimir_valor();
+
+  if(Serial.available()){
+    Serial.println("Conectado con python.");
+    int Number=Serial.parseInt();
+    Serial.println(Number);
+  }
+
+//  imprimir_valor();
 
   robot.moveMotor1(J1.leerAnalogico1());
   robot.moveMotor2(J1.leerAnalogico2());
